@@ -56,7 +56,7 @@ then `apply_coupons` should return the following hash:
 }
 ```
 
-Notice how there were three avocados in the cart, but the coupon only applied to two of them. This left one un-couponed avocado in the cart at $3.00 and one "bundle" of discounted avocados totalling $5.00.
+Notice how there were three avocados in the cart, but the coupon only applied to two of them. This left one un-couponed avocado in the cart at $3.00 and one "bundle" of discounted avocados totaling $5.00.
 
 #### The `apply_clearance` method
 
