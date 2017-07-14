@@ -22,7 +22,7 @@ def apply_coupons(cart, coupons)
       next
     elsif cart.include?(coupon[:item]) && cart.include?("#{coupon[:item]} W/COUPON")
       cart["#{coupon[:item]} W/COUPON"][:count] += 1
-      cart[coupon[:item]][:count] = cart[coupon[:item]][:count] - coupon[:num]
+      cart[coupon[:item]][:count] -= coupon[:num]
     else
       cart["#{coupon[:item]} W/COUPON"] = {:price => coupon[:cost], :clearance => cart[coupon[:item]][:clearance], :count => 1}
       cart[coupon[:item]][:count] = (cart[coupon[:item]][:count] - coupon[:num])
@@ -49,10 +49,6 @@ def checkout(cart, coupons)
   total_num = 0
 
   consolidated = apply_clearance(apply_coupons(consolidate_cart(cart),coupons))
-
-  puts "cart: #{cart}"
-  puts "consolidated: #{consolidated}"
-  puts "coupons: #{coupons}"
 
   consolidated.each do |key, value|
     total += (value[:price] * value[:count])
